@@ -1,0 +1,44 @@
+:root {
+    --primary-color: #FFD15B;
+    --secondary-color: #E5E5E5;
+}
+
+/* Header */
+#header {
+    background-image: url("/img/recipes/Recette40.jpg");
+    background-repeat: no-repeat;
+    background-size: auto;
+    height: 667px;
+}
+
+#header input {
+    max-width: 80%;
+}
+
+#logo {
+    width: 200px;
+}
+
+h1 {
+    font-size: 44px;
+    font-weight: 400;
+    line-height: 66px;
+    font-family: 'Anton', sans-serif;
+    color: var(--primary-color);
+}
+
+/* Main */
+
+#main {
+    background-color: var(--secondary-color);
+}
+
+#main h3 {
+    font-size: 21px;
+    line-height: 31px;
+    font-family: 'Anton', sans-serif;
+}
+
+.button-radius {
+    border-radius: 10px;
+}
