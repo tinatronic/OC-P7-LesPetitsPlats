@@ -11,8 +11,9 @@
     height: 667px;
 }
 
-#header input {
-    max-width: 80%;
+.search-icon {
+    position:absolute;
+    right: 10px;
 }
 
 #logo {
@@ -27,6 +28,13 @@ h1 {
     color: var(--primary-color);
 }
 
+/*#header input[type="search"] {
+    background-image: url("/img/assets/search.png");
+    background-size: auto;
+    background-position: 99%;
+    background-repeat: no-repeat;
+}*/
+
 /* Main */
 
 #main {
@@ -39,6 +47,39 @@ h1 {
     font-family: 'Anton', sans-serif;
 }
 
-.button-radius {
+/* .button-radius {
     border-radius: 10px;
+} */
+
+/* Cards */
+
+.card-title {
+    font-family: 'Anton', sans-serif;
 }
+
+.card-subtitle {
+    color: gray;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.card-img-top {
+    height: 219px;
+    object-fit: cover;
+}
+
+.card-recipe-time {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background-color: var(--primary-color);
+    border-radius: 2rem;
+}
+
+.card-text {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 4; /* number of lines to show */
+            line-clamp: 4; 
+    -webkit-box-orient: vertical;
+ }
