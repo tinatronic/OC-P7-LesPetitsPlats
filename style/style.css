@@ -11,11 +11,6 @@
     height: 667px;
 }
 
-.search-icon {
-    position:absolute;
-    right: 10px;
-}
-
 #logo {
     width: 200px;
 }
@@ -28,17 +23,39 @@ h1 {
     color: var(--primary-color);
 }
 
-/*#header input[type="search"] {
-    background-image: url("/img/assets/search.png");
-    background-size: auto;
-    background-position: 99%;
-    background-repeat: no-repeat;
-}*/
+/* Search */
+
+.search__button {
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    border: none;
+    padding: 0;
+    width: 40px;
+}
+
+.search__button > img {
+    width: 100%;
+}
 
 /* Main */
 
+/* Filters*/
+
 #main {
     background-color: var(--secondary-color);
+}
+
+.dropdown-toggle {
+    width: auto;
+    min-width: 150px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.dropdown-toggle::after {
+    display: none;
 }
 
 #main h3 {
@@ -47,11 +64,12 @@ h1 {
     font-family: 'Anton', sans-serif;
 }
 
-/* .button-radius {
-    border-radius: 10px;
-} */
 
 /* Cards */
+
+.card {
+    height: 710px;
+}
 
 .card-title {
     font-family: 'Anton', sans-serif;
@@ -65,6 +83,7 @@ h1 {
 
 .card-img-top {
     height: 219px;
+    min-height: 219px;
     object-fit: cover;
 }
 

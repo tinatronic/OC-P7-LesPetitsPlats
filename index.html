@@ -1,78 +1,87 @@
 <!DOCTYPE html>
 <html lang="fr">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
-        <title>Les Petits Plats</title>
-        <!-- Bootstrap -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-        <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
-        <!-- Google Fonts -->
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
-        <!-- CSS -->
-        <link rel="stylesheet" href="style/style.css">
-    </head>
-    <body>
-        <!-- Header -->
-        <header id="header" class="p-5">
-            <div>
-                <a href="/index.html" title="Page d'accueil">
-                    <img id="logo" src="img/assets/Logo.png" alt="logo">
-                </a>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+    <link rel="icon" href="img/assets/icone.png">
+    <title>Les Petits Plats</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" href="style/style.css">
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/331bae651e.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header id="header" class="p-5">
+        <div>
+            <a href="/index.html" title="Page d'accueil">
+                <img id="logo" src="img/assets/Logo.png" alt="logo">
+            </a>
+        </div>
+        <div class="container text-center mt-5 pt-5">
+            <h1>Cherchez parmi plus de 1500 recettes<br> du quotidien, simples et délicieuses</h1>
+            <div class="input-group rounded mt-5 d-flex justify-content-center align-items-center">
+                <!-- Searchbar -->
+                <input type="search" class="form-control p-3 rounded" placeholder="Rechercher une recette, un ingrédient..."
+                aria-label="search">
+                <button class="search__button">
+                    <img src="img/assets/search.png" alt="search">
+                </button>
             </div>
-            <div class="container text-center mt-5 pt-5">
-                <h1>Cherchez parmi plus de 1500 recettes<br> du quotidien, simples et délicieuses</h1>
-                <div class="input-group rounded mt-5 d-flex justify-content-center align-items-center">
-                    <input type="search" class="form-control p-4 rounded" placeholder="Rechercher une recette, un ingrédient..."
-                           aria-label="search">
-                    <img class="search-icon" src="img/assets/search.png" alt="search-icon">
-                </div>
-            </div>
-        </header>
-        <main id="main">
-            <div class="container py-3">
-                <div class="row">
+        </div>
+    </header>
+    <main id="main">
+        <div class="container py-3">
+            <!-- Filters -->
+            <section id="filters">
+                <div class="row mb-5">
                     <div class="col-9 d-flex">
-                        <div class="col-2">
+                        <div class="col-3">
                             <div class="dropdown">
-                                <button class="btn bg-white button-radius dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Ingrédients
+                                <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Ingrédients
+                                    <i class="fa fa-chevron-down"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
-                              </div>
+                            </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <div class="dropdown">
-                                <button class="btn bg-white button-radius dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Appareils
+                                <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Appareils
+                                    <i class="fa fa-chevron-down"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
-                              </div>
+                            </div>
                         </div>
-                        <div class="col-2">
+                        <div class="col-3">
                             <div class="dropdown">
-                                <button class="btn bg-white button-radius dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                  Ustensiles
+                                <button class="btn bg-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Ustensiles
+                                    <i class="fa fa-chevron-down"></i>
                                 </button>
                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="#">Action</a>
-                                  <a class="dropdown-item" href="#">Another action</a>
-                                  <a class="dropdown-item" href="#">Something else here</a>
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another action</a>
+                                    <a class="dropdown-item" href="#">Something else here</a>
                                 </div>
-                              </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-3">
@@ -83,16 +92,17 @@
                         </div>
                     </div>
                 </div>
-                <!-- Cards -->
+            </section>
+            <!-- Cards -->
+            <section id="recipes_cards">
                 <div id="cards"></div>
-            </div>
-        </main>
-        <footer></footer>
-
-        <!-- Script Js -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
-        <script src="script/recipes.js"></script>
-        <script src="script/index.js"></script>
-    </body>
+            </section>    
+        </div>
+    </main>
+    <!-- Script Js -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="script/recipes.js"></script>
+    <script src="script/index.js"></script>
+</body>
 </html>
