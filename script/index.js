@@ -1,4 +1,4 @@
-console.log("recipes", recipes)
+//console.log("recipes", recipes)
 
 const cards = document.getElementById("cards")
 let children = ""
@@ -23,7 +23,7 @@ for (let i = 0; i < recipes.length; i++) {
     </div>
     </div>
     </div>`
-    console.log("ingredients", recipes[i].ingredients)
+    //console.log("ingredients", recipes[i].ingredients)
     
     for(let j = 0; j < recipes[i].ingredients.length; j++) {
         //console.log("unit", recipes[i].ingredients[j].unit)
@@ -37,17 +37,20 @@ ${children}</div>
 </div>`
 
 
-function search(word) {
+const searchBar = document.getElementById("searchbar")
+//const noResult = document.querySelector('.no-result-message');
+
+function search(searchInput) {
     let results = [];
     for(let i = 0; i < recipes.length; i++) {
-        if(recipes[i].name.toLowerCase().includes(word.toLowerCase())) {
+        if(recipes[i].name.toLowerCase().includes(searchInput)) {
             results.push(recipes[i])
-        } else if(recipes[i].description.toLowerCase().includes(word.toLowerCase())) {
+        } else if(recipes[i].description.toLowerCase().includes(searchInput)) {
             results.push(recipes[i])
         } else {
             let ingredientsTmp = recipes[i].ingredients;
             for(let j = 0; j < ingredientsTmp.length; j++) {
-                if(ingredientsTmp[j].ingredient.toLowerCase().includes(word.toLowerCase())) {
+                if(ingredientsTmp[j].ingredient.toLowerCase().includes(searchInput)) {
                     results.push(recipes[i])
                     j = ingredientsTmp.length;
                 }
