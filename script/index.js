@@ -1,5 +1,5 @@
-console.log("recipes", recipes)
-
+//console.log("recipes", recipes)
+function displayRecipes(recipes) {
 const cards = document.getElementById("cards")
 let children = ""
 
@@ -23,7 +23,7 @@ for (let i = 0; i < recipes.length; i++) {
     </div>
     </div>
     </div>`
-    console.log("ingredients", recipes[i].ingredients)
+    //console.log("ingredients", recipes[i].ingredients)
     
     for(let j = 0; j < recipes[i].ingredients.length; j++) {
         //console.log("unit", recipes[i].ingredients[j].unit)
@@ -31,11 +31,13 @@ for (let i = 0; i < recipes.length; i++) {
     }   
 }
 
-cards.innerHTML += `<div>
+cards.innerHTML = `<div>
 <div class="row gy-5">
 ${children}</div>
 </div>`
+}
 
+displayRecipes(recipes);
 
 function search(word) {
     let results = [];
@@ -54,6 +56,6 @@ function search(word) {
             }
         }
     }
-    console.log(results);
+    //console.log(results);
     return results;
 }
