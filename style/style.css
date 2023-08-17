@@ -5,9 +5,9 @@
 
 /* Header */
 #header {
-    background-image: url("/img/recipes/Recette40.jpg");
+    background-image: url("/img/assets/Mask\ group.png");
     background-repeat: no-repeat;
-    background-size: auto;
+    background-size: cover;
     height: 667px;
 }
 
@@ -58,6 +58,16 @@ h1 {
     display: none;
 }
 
+.list-ingredients {
+    max-height: 300px;
+    overflow: scroll;
+}
+
+li {
+    padding: 0;
+    text-decoration: none;
+}
+
 #main h3 {
     font-size: 21px;
     line-height: 31px;
@@ -74,6 +84,10 @@ h1 {
 
 .tag-input:focus {
     outline: none;
+}
+
+.chip {
+    background-color: #FFD15B;
 }
 
 /* Cards */
@@ -107,9 +121,9 @@ h1 {
 }
 
 .card-text {
-    overflow: hidden;
+    overflow-y: scroll;
     display: -webkit-box;
     -webkit-line-clamp: 4; /* number of lines to show */
             line-clamp: 4; 
     -webkit-box-orient: vertical;
- }
+}

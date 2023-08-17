@@ -25,15 +25,15 @@ function filters(recipes) {
             }
         })
         
-        const appTag = [...document.querySelectorAll('.list-appliance')].map( (appTag) => appTag.innerText);
+        // const appTag = [...document.querySelectorAll('.list-appliance')].map( (appTag) => appTag.innerText);
         
-        if (applianceTagList.includes(recipe.appliance) === false && appTag.includes(recipe.appliance) === false) {
-            applianceTagList.push(recipe.appliance);
-            const filterItem = document.createElement('li');
-            filterItem.classList.add('appliances-item');
-            filterItem.innerText = recipe.appliance;
-            applianceTagListWrapper.appendChild(filterItem);
-        }
+        // if (applianceTagList.includes(recipe.appliance) === false && appTag.includes(recipe.appliance) === false) {
+        //     applianceTagList.push(recipe.appliance);
+        //     const filterItem = document.createElement('li');
+        //     filterItem.classList.add('appliances-item');
+        //     filterItem.innerText = recipe.appliance;
+        //     applianceTagListWrapper.appendChild(filterItem);
+        // }
         
         // const ustensilTag = [...document.querySelectorAll('.list-ustensils')].map( (ustensilTag) => ustensilTag.innerText)
         // recipe.ustensils.forEach((ustensils) => {
@@ -48,18 +48,13 @@ function filters(recipes) {
     });
 }
 
-//filters(recipes);
 const ingValue = document.querySelector('.ingredients-chips-wrapper');
-
-// private _filter(option: string): string[] {
-//     const filterValue = option.toLowerCase();
-
-//     return tableauPrincipal.filter(option => option.propriétéSiyena.toLowerCase().includes(filterValue));
-// }
+const ingredientSelected = [];
 
 function renderIngredients(recipes, searchIngredients) {
     const ingredientTagListWrapper = document.querySelector(".list-ingredients");
     const ingredientTagList = [];
+    
     ingredientTagListWrapper.innerHTML = "";
     
     recipes.forEach((recipe) => {
@@ -76,20 +71,72 @@ function renderIngredients(recipes, searchIngredients) {
                     ingredientTagListWrapper.appendChild(filterItem);
 
                     filterItem.addEventListener('click', () => {
-                        displayChips(ingredient);
+                        displayIngredientChip(ingredient);
                         const ingredientIndex = ingredientTagList.indexOf(ingredient.toLowerCase());
                         ingredientTagList.splice(ingredientIndex, 1);
                         ingredientTagListWrapper.removeChild(filterItem);
                     })
                 }
-                
-                //console.log(ingredientTagList)
             }
         })
     });
 }
 
+function displayIngredientChip(ingredientChips) {
+    const chip = document.querySelector('.ingredients-chips-wrapper');
+    const chipList = document.createElement('li');
+    chipList.setAttribute('id', ingredientChips);
+    chipList.innerHTML = `<span class="chip">${ingredientChips}</span><a href="javascript: removeIngredientChip('${ingredientChips}')">X</a>`;
+    //chip.innerHTML = '';
+    // ingredientTagList.map((item, index) => {
+    chip.appendChild(chipList);
+    // });
+    ingredientSelected.push(ingredientChips.toLowerCase());
+    const result = filteredGlobalRecipes(searchBar.value, ingredientSelected);
+    displayRecipes(result);
+    console.log(result)
+}
+
+function removeIngredientChip(ingredientChips) {
+    const chip = document.querySelector('.ingredients-chips-wrapper');
+    const chipChildren = document.getElementById(ingredientChips);
+    chip.removeChild(chipChildren);
+    // items = items.filter(item => ingredientTagList.indexOf(item) != i);
+    renderIngredients(recipes);
+    ingredientSelected.splice(ingredientSelected.indexOf(ingredientChips.toLowerCase()), 1);
+}
+
+// Render appliance list in dropdown menu
+const appValue = document.querySelector('.appliance-chips-wrapper');
+
+function renderAppliance(recipes, searchAppliance) {
+    const applianceTagListWrapper = document.querySelector(".list-appliance");
+    const applianceTagList = [];
+    applianceTagListWrapper.innerHTML = "";
+    
+    recipes.forEach((recipe) => {
+        
+        const appTag = [...document.querySelectorAll('.list-appliance')].map( (appTag) => appTag.innerText);
+        
+        if (applianceTagList.includes(recipe.appliance) === false && appTag.includes(recipe.appliance) === false) {
+            applianceTagList.push(recipe.appliance);
+            const filterItem = document.createElement('li');
+            filterItem.classList.add('appliances-item');
+            filterItem.innerText = recipe.appliance;
+            applianceTagListWrapper.appendChild(filterItem);
+
+            filterItem.addEventListener('click', () => {
+                displayChips(appliance);
+                const applianceIndex = applianceTagList.indexOf(appliance.toLowerCase());
+                applianceTagList.splice(applianceIndex, 1);
+                applianceTagListWrapper.removeChild(filterItem);
+            })
+        }
+    });
+}
+
 const ingInput = document.querySelector('.ingredients-chips-input');
+const appInput = document.querySelector('.appliance-chips-input');
 
 ingInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
@@ -99,23 +146,5 @@ ingInput.addEventListener('keypress', function(e) {
     }
 })
 
-function displayChips(ingredientChips) {
-    const chip = document.querySelector('.ingredients-chips-wrapper');
-    const chipLi = document.createElement('li');
-    chipLi.setAttribute('id', ingredientChips);
-    chipLi.innerHTML = `<span>${ingredientChips}</span><a href="javascript: remove('${ingredientChips}')">X</a>`;
-    //chip.innerHTML = '';
-    // ingredientTagList.map((item, index) => {
-    chip.appendChild(chipLi);
-    // });
-}
-
-function remove(ingredientChips) {
-    const chip = document.querySelector('.ingredients-chips-wrapper');
-    const chipChildren = document.getElementById(ingredientChips);
-    chip.removeChild(chipChildren);
-    // items = items.filter(item => ingredientTagList.indexOf(item) != i);
-    renderIngredients(recipes);
-}
-
 renderIngredients(recipes);
+renderAppliance(recipes);
