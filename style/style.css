@@ -3,6 +3,11 @@
     --secondary-color: #E5E5E5;
 }
 
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* Header */
 #header {
     background-image: url("/img/assets/Mask\ group.png");
@@ -86,8 +91,16 @@ li {
     outline: none;
 }
 
-.chip {
+.chip-item {
+    width: fit-content;
     background-color: #FFD15B;
+    padding: 8px;
+    border-radius: 5px;
+    list-style-type: none;
+}
+
+.chip {
+    margin-right: 4rem;
 }
 
 /* Cards */
