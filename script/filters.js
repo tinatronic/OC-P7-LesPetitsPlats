@@ -86,28 +86,25 @@ function displayIngredientChip(ingredientChips) {
     const chip = document.querySelector('.ingredients-chips-wrapper');
     const chipList = document.createElement('li');
     chipList.setAttribute('id', ingredientChips);
-    chipList.innerHTML = `<span class="chip">${ingredientChips}</span><a href="javascript: removeIngredientChip('${ingredientChips}')">X</a>`;
-    //chip.innerHTML = '';
-    // ingredientTagList.map((item, index) => {
+    chipList.setAttribute('class', 'chip-item');
+    chipList.innerHTML = `<span class="chip">${ingredientChips}</span><a href="javascript: removeIngredientChip('${ingredientChips}')"><i class="fas fa-xmark"></i></a>`;
     chip.appendChild(chipList);
-    // });
     ingredientSelected.push(ingredientChips.toLowerCase());
-    const result = filteredGlobalRecipes(searchBar.value, ingredientSelected);
+    const result = filteredGlobalRecipes(searchBar.value, ingredientSelected, applianceSelected);
     displayRecipes(result);
-    console.log(result)
 }
 
 function removeIngredientChip(ingredientChips) {
     const chip = document.querySelector('.ingredients-chips-wrapper');
     const chipChildren = document.getElementById(ingredientChips);
     chip.removeChild(chipChildren);
-    // items = items.filter(item => ingredientTagList.indexOf(item) != i);
     renderIngredients(recipes);
     ingredientSelected.splice(ingredientSelected.indexOf(ingredientChips.toLowerCase()), 1);
 }
 
 // Render appliance list in dropdown menu
 const appValue = document.querySelector('.appliance-chips-wrapper');
+const applianceSelected = [];
 
 function renderAppliance(recipes, searchAppliance) {
     const applianceTagListWrapper = document.querySelector(".list-appliance");
@@ -126,8 +123,8 @@ function renderAppliance(recipes, searchAppliance) {
             applianceTagListWrapper.appendChild(filterItem);
 
             filterItem.addEventListener('click', () => {
-                displayChips(appliance);
-                const applianceIndex = applianceTagList.indexOf(appliance.toLowerCase());
+                displayApplianceChip(recipe.appliance);
+                const applianceIndex = applianceTagList.indexOf(recipe.appliance.toLowerCase());
                 applianceTagList.splice(applianceIndex, 1);
                 applianceTagListWrapper.removeChild(filterItem);
             })
@@ -135,8 +132,52 @@ function renderAppliance(recipes, searchAppliance) {
     });
 }
 
+function displayApplianceChip(applianceChips) {
+    const chip = document.querySelector('.appliance-chips-wrapper');
+    const chipList = document.createElement('li');
+    chipList.setAttribute('id', applianceChips);
+    chipList.setAttribute('class', 'chip-item');
+    chipList.innerHTML = `<span class="chip">${applianceChips}</span><a href="javascript: removeIngredientChip('${applianceChips}')"><i class="fas fa-xmark"></i></a>`;
+    chip.appendChild(chipList);
+
+    applianceSelected.push(applianceChips.toLowerCase());
+    const result = filteredGlobalRecipes(searchBar.value, ingredientSelected, applianceSelected);
+    displayRecipes(result);
+    console.log(result)
+}
+
+function removeApplianceChip(applianceChips) {
+    const chip = document.querySelector('.appliance-chips-wrapper');
+    const chipChildren = document.getElementById(applianceChips);
+    chip.removeChild(chipChildren);
+    renderIngredients(recipes);
+    ingredientSelected.splice(ingredientSelected.indexOf(applianceChips.toLowerCase()), 1);
+}
+
+
+// Ustensils
+const ustValue = document.querySelector('.ustensils-chip-wrapper');
+const ustensilSelected = [];
+
+function renderUstensils(recipes) {
+    const chip = document.querySelector('.ustensils-chips-wrapper');
+    const chipList = document.createElement('li');
+
+    const ustensilTag = [...document.querySelectorAll('.list-ustensils')].map( (ustensilTag) => ustensilTag.innerText)
+        recipe.ustensils.forEach((ustensils) => {
+            if (ustensilTagList.includes(ustensils) === false && ustensilTag.includes(ustensils) === false) {
+                ustensilTagList.push(ustensils);
+                const filterItem = document.createElement('li');
+                filterItem.classList.add('ustensils-items');
+                filterItem.innerText = ustensils;
+                ustensilTagListWrapper.appendChild(filterItem);
+            }
+        });  
+}
+
 const ingInput = document.querySelector('.ingredients-chips-input');
 const appInput = document.querySelector('.appliance-chips-input');
+const ustInput = document.querySelector('.ustensils-chips-input');
 
 ingInput.addEventListener('keypress', function(e) {
     if (e.key === 'Enter') {
