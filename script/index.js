@@ -10,7 +10,7 @@ for (let i = 0; i < recipes.length; i++) {
     //console.log(ingredientList)
     children += `<div class="col-sm-4">
     <div class="card ">
-    <img src="../img/recipes/${recipes[i].image}" class="card-img-top" alt="...">
+    <img src="./img/recipes/${recipes[i].image}" class="card-img-top" alt="...">
     <div class="card-recipe-time"><p class="px-3 py-1 m-0">${recipes[i].time}min</p></div>
     <div class="card-body p-4">
     <h5 class="card-title py-3 m-0">${recipes[i].name}</h5>
