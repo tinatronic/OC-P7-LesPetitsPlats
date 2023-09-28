@@ -11,7 +11,7 @@ const filteredGlobalRecipes = (searchInput, ingsChips, appChips, ustChips) => {
     
     if(searchInput && searchInput!= "") {
         filteredRecipesBySearch = recipes.filter(recipe => {
-            console.log(recipe.name, recipe.name.toLowerCase().includes(searchInput))
+            //console.log(recipe.name, recipe.name.toLowerCase().includes(searchInput))
             //console.log(recipe.name.toLowerCase().includes(searchInput))
             return (searchInput && (recipe.name.toLowerCase().includes(searchInput) ||
             recipe.description.toLowerCase().includes(searchInput) ||
@@ -24,9 +24,9 @@ const filteredGlobalRecipes = (searchInput, ingsChips, appChips, ustChips) => {
     if(ingsChips && ingsChips.length > 0 ) {
         console.log(ingsChips)
         filteredRecipesByIng = recipes.filter(recipe => ingsChips.every(ingChip => recipe.ingredients.find(ing => ing.ingredient.toLowerCase() == ingChip.toLowerCase())))
-                .map((recipe) => recipe.id)
-                console.log("filteredRecipesByIng", filteredRecipesByIng)
-                toFiltered.push(filteredRecipesByIng)
+        .map((recipe) => recipe.id)
+        console.log("filteredRecipesByIng", filteredRecipesByIng)
+        toFiltered.push(filteredRecipesByIng)
     }
     
     if(appChips && appChips.length > 0 ) {
@@ -43,40 +43,49 @@ const filteredGlobalRecipes = (searchInput, ingsChips, appChips, ustChips) => {
             ).map((recipe) => recipe.id)
             console.log("filteredRecipesByUst", filteredRecipesByUst)
             toFiltered.push(filteredRecipesByUst)
-    }
-    
-    const filteredRecipes = recipes.filter(recipe => {
-        let toAdded = true;
-        toFiltered.forEach((array) => { 
-            if(!array.includes(recipe.id)) {
-                toAdded = false
-            }
+        }
+        
+        const filteredRecipes = recipes.filter(recipe => {
+            let toAdded = true;
+            toFiltered.forEach((array) => { 
+                if(!array.includes(recipe.id)) {
+                    toAdded = false
+                }
+            })
+            return toAdded;
         })
-        return toAdded;
-    })
-    console.log(filteredRecipes);
-    return filteredRecipes;
-    
-    // const filteredRecipes = recipes.filter(recipe => {
-    //     //console.log(recipe.appliance)
+        console.log(filteredRecipes);
+        filteredRecipesG = filteredRecipes;
         
-    //     return (searchInput && (recipe.name.toLowerCase().includes(searchInput) ||
-    //     recipe.description.toLowerCase().includes(searchInput) ||
-    //     recipe.ingredients.some((ing) => ing.ingredient.toLowerCase().includes(searchInput)))) ||
-    //     (!appChips || (appChips.includes(recipe.appliance.toLowerCase()))) ||
-    //     (!ingsChips || (recipe.ingredients.some((ing) => ingsChips.some((ingsChip) => ingsChip.includes(ing.ingredient.toLowerCase())))))
-        
-    //     //(!ustChips || (ustChips && recipe.ustensils.filter(ust => ustChips.includes(ust.toLowerCase())).length > 0))
-    //     //(!ustChips || (ustChips && recipe.ustensils.some((ust) => ustChips.includes(ust.toLowerCase()))))
-    //     //recipes.appliance.toLowerCase().includes(searchInput)
-    // })
-    // return filteredRecipes;
-};
+        //renderIngredients(filteredRecipesG);
+        // renderAppliance(filteredRecipesG);
+        // renderUstensils(filteredRecipesG);
 
-searchBar.addEventListener('keyup', (e) => {
-    const searchInput = e.target.value.toLowerCase()
-    //console.log(searchInput)
-    const filteredRecipes = filteredGlobalRecipes(searchInput, ingredientSelected, applianceSelected);
-    //console.log(filteredRecipes)
-    displayRecipes(filteredRecipes)
-})
+        const numRecipes = document.getElementById('nb-recipe').innerHTML = filteredRecipes.length;
+        
+        
+        return filteredRecipes;
+        
+        // const filteredRecipes = recipes.filter(recipe => {
+        //     //console.log(recipe.appliance)
+        
+        //     return (searchInput && (recipe.name.toLowerCase().includes(searchInput) ||
+        //     recipe.description.toLowerCase().includes(searchInput) ||
+        //     recipe.ingredients.some((ing) => ing.ingredient.toLowerCase().includes(searchInput)))) ||
+        //     (!appChips || (appChips.includes(recipe.appliance.toLowerCase()))) ||
+        //     (!ingsChips || (recipe.ingredients.some((ing) => ingsChips.some((ingsChip) => ingsChip.includes(ing.ingredient.toLowerCase())))))
+        
+        //     //(!ustChips || (ustChips && recipe.ustensils.filter(ust => ustChips.includes(ust.toLowerCase())).length > 0))
+        //     //(!ustChips || (ustChips && recipe.ustensils.some((ust) => ustChips.includes(ust.toLowerCase()))))
+        //     //recipes.appliance.toLowerCase().includes(searchInput)
+        // })
+        // return filteredRecipes;
+    };
+    
+    searchBar.addEventListener('keyup', (e) => {
+        const searchInput = e.target.value.toLowerCase()
+        //console.log(searchInput)
+        const filteredRecipes = filteredGlobalRecipes(searchInput, ingredientSelected, applianceSelected);
+        //console.log(filteredRecipes)
+        displayRecipes(filteredRecipes)
+    })
