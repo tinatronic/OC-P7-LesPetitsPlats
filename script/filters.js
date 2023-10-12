@@ -51,6 +51,7 @@
 const ingValue = document.querySelector('.ingredients-chips-wrapper');
 const ingredientSelected = [];
 
+// Affiche la liste des ingrédients dans le menu dropdown
 function renderIngredients(recipes, searchIngredients) {
     const ingredientTagListWrapper = document.querySelector(".list-ingredients");
     const ingredientTagList = [];
@@ -82,6 +83,7 @@ function renderIngredients(recipes, searchIngredients) {
     });
 }
 
+// Affiche le tag de l'ingrédient sélectionné
 function displayIngredientChip(ingredientChips) {
     const chip = document.querySelector('.ingredients-chips-wrapper');
     const chipList = document.createElement('li');
@@ -94,6 +96,7 @@ function displayIngredientChip(ingredientChips) {
     displayRecipes(result);
 }
 
+// 
 function removeIngredientChip(ingredientChips) {
     const chip = document.querySelector('.ingredients-chips-wrapper');
     const chipChildren = document.getElementById(ingredientChips);
