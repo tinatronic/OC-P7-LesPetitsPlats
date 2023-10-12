@@ -1,4 +1,6 @@
  //console.log("recipes", recipes)
+let filteredRecipesG = recipes;
+
  function displayRecipes(recipes) {
     console.log(recipes)
     const cards = document.getElementById("cards")
