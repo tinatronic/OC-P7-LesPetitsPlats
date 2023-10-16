@@ -11,14 +11,11 @@ const filteredGlobalRecipes = (searchInput, ingsChips, appChips, ustChips) => {
     
     if(searchInput && searchInput!= "") {
         filteredRecipesBySearch = recipes.filter(recipe => {
-            //console.log(recipe.name, recipe.name.toLowerCase().includes(searchInput))
-            //console.log(recipe.name.toLowerCase().includes(searchInput))
             return (searchInput && (recipe.name.toLowerCase().includes(searchInput) ||
             recipe.description.toLowerCase().includes(searchInput) ||
             recipe.ingredients.some((ing) => ing.ingredient.toLowerCase() == searchInput.toLowerCase())))
         }).map((r) => r.id)
         toFiltered.push(filteredRecipesBySearch)
-        //console.log("filteredRecipesBySearch", filteredRecipesBySearch)
     }
     
     if(ingsChips && ingsChips.length > 0 ) {
@@ -32,7 +29,6 @@ const filteredGlobalRecipes = (searchInput, ingsChips, appChips, ustChips) => {
     if(appChips && appChips.length > 0 ) {
         filteredRecipesByApp = recipes.filter((recipe) => appChips.includes(recipe.appliance.toLowerCase())
         ).map((recipe) => recipe.id)
-        //console.log("filteredRecipesByApp", filteredRecipesByApp)
         toFiltered.push(filteredRecipesByApp)
     }
     
